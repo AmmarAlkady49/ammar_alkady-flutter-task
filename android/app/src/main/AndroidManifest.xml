@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="ammar_alkady_flutter_task"
+        android:label="Otex App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
