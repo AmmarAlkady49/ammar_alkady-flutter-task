@@ -27,7 +27,10 @@ class _MainScreenState extends State<MainScreen> {
     const OffersPage(),
     const OffersPage(),
     const OffersPage(),
-    BlocProvider(create: (context) => PlansCubit(), child: const PlansPage()),
+    BlocProvider(
+      create: (context) => PlansCubit()..init(),
+      child: const PlansPage(),
+    ),
   ];
 
   @override

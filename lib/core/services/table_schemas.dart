@@ -9,4 +9,11 @@ class TableSchemas {
   salesCount TEXT
 );
   ''';
+
+  static const String plansTable = '''
+  CREATE TABLE selected_plan (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    planId TEXT
+  )
+  ''';
 }

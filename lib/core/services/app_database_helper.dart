@@ -22,9 +22,7 @@ class AppDatabaseHelper {
 
   Future<void> _createDB(Database db, int version) async {
     await db.execute(TableSchemas.productsTable);
-    // await db.execute(TableSchemas.categoriesTable);
-    // await db.execute(TableSchemas.plansTable);
-    // await db.execute(TableSchemas.filtersTable);
+    await db.execute(TableSchemas.plansTable);
   }
 
   Future<void> insert(String table, Map<String, dynamic> data) async {
@@ -40,5 +38,22 @@ class AppDatabaseHelper {
   Future<void> delete(String table, String id) async {
     final db = await instance.database;
     await db.delete(table, where: 'id = ?', whereArgs: [id]);
+  }
+
+  // Save selected plan 
+  Future<void> saveSelectedPlan(String planId) async {
+    final db = await instance.database;
+    await db.delete('selected_plan'); 
+    await db.insert('selected_plan', {'planId': planId});
+  }
+
+  // Get saved plan
+  Future<String?> getSelectedPlan() async {
+    final db = await instance.database;
+    final result = await db.query('selected_plan', limit: 1);
+    if (result.isNotEmpty) {
+      return result.first['planId'] as String;
+    }
+    return null;
   }
 }
